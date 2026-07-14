@@ -1,0 +1,31 @@
+{
+  "name": "gas-deobfuscator",
+  "version": "1.0.0",
+  "description": "JavaScript deobfuscator for Google Apps Script and javascript-obfuscator output",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhikariyana64/gas-deobfuscator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dhikariyana64/gas-deobfuscator/issues"
+  },
+  "homepage": "https://github.com/dhikariyana64/gas-deobfuscator#readme",
+  "dependencies": {
+    "@babel/generator": "^8.0.0",
+    "@babel/parser": "^8.0.4",
+    "@babel/traverse": "^8.0.4",
+    "@babel/types": "^8.0.4",
+    "prettier": "^3.9.5"
+  },
+  "devDependencies": {
+    "eslint": "^10.7.0"
+  }
+}
