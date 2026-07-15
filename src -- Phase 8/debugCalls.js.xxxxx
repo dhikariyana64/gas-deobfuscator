@@ -1,0 +1,49 @@
+const traverse = require("@babel/traverse").default;
+const generate = require("@babel/generator").default;
+const t = require("@babel/types");
+
+function debugDecoderCalls(ast, aliases) {
+
+    let count = 0;
+
+    traverse(ast, {
+
+        CallExpression(path) {
+
+            const callee = path.node.callee;
+
+            // Ignore calls like obj.method()
+            if (!t.isIdentifier(callee))
+                return;
+
+            // Ignore functions that are not decoder aliases
+            if (!aliases.has(callee.name))
+                return;
+
+            count++;
+
+            console.log("\n===== CALL #" + count + " =====");
+
+            console.log(generate(path.node).code);
+
+            console.log("Argument types:");
+
+            path.node.arguments.forEach(arg => {
+                console.log("  -", arg.type);
+            });
+
+            // Stop after 20 calls
+            if (count >= 20)
+                path.stop();
+
+        }
+
+    });
+
+    console.log("\nTotal calls found:", count);
+
+}
+
+module.exports = {
+    debugDecoderCalls
+};

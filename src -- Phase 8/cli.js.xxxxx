@@ -148,48 +148,25 @@ try {
 
     
 
-    const { debugDecoderCalls } =
-    require("./debugCalls");
-
-    debugDecoderCalls(result.ast);
-    
-
-
-    
-    const { findReferences } = require("./findReferences");
-
-    // ...
-
-    findReferences(result.ast);
-
-
-
     const { resolveAliases } =
-    require("./analysis/aliasResolver");
+require("./analysis/aliasResolver");
 
-    const aliases =
-    resolveAliases(result.ast, "_0x3d83");
+const aliases =
+resolveAliases(result.ast, "_0x3d83");
 
-    console.log();
+console.log();
+console.log("===== Decoder Aliases =====");
+console.log([...aliases]);
 
-    console.log("Decoder aliases:");
+const { debugDecoderCalls } =
+require("./debugCalls");
 
-    console.log([...aliases]);
+debugDecoderCalls(result.ast, aliases);
 
+const { findReferences } =
+require("./findReferences");
 
-
-
-
-    const { writeOutput } = require("./printer");
-
-    // after inlineStrings()
-
-    writeOutput(
-      result.ast,
-      "output/Code.cleaned.gs"
-    );
-
-    console.log("Written: output/Code.cleaned.gs");
+findReferences(result.ast);
 
 
 

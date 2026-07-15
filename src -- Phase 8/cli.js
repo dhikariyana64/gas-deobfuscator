@@ -179,21 +179,6 @@ try {
 
 
 
-
-    const { writeOutput } = require("./printer");
-
-    // after inlineStrings()
-
-    writeOutput(
-      result.ast,
-      "output/Code.cleaned.gs"
-    );
-
-    console.log("Written: output/Code.cleaned.gs");
-
-
-
-
 }
 
 catch (err) {
